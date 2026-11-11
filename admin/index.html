@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Enquiries | Matsyodari Renewables Admin</title>
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+
+<section class="login" id="loginView" hidden>
+  <form class="login-card" id="loginForm">
+    <img src="/images/logo-tile.png" alt="Matsyodari Renewables logo" width="64" height="64">
+    <h1>Admin sign in</h1>
+    <p>Matsyodari Renewables enquiries</p>
+    <label for="password">Password</label>
+    <input id="password" type="password" autocomplete="current-password" required autofocus>
+    <button class="btn primary" type="submit">Sign in</button>
+    <p class="msg" id="loginMsg" role="alert"></p>
+  </form>
+</section>
+
+<div id="appView" hidden>
+  <header class="bar">
+    <div class="bar-in">
+      <div class="brand"><img src="/images/logo-tile.png" alt="" width="36" height="36"><div><strong>Matsyodari Renewables</strong><small>Enquiries</small></div></div>
+      <div class="bar-actions">
+        <a class="btn ghost" href="/" target="_blank" rel="noopener">View website</a>
+        <button class="btn ghost" id="logoutBtn" type="button">Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="stats" id="stats">
+      <div class="stat"><b id="cTotal">0</b><span>Total</span></div>
+      <div class="stat s-new"><b id="cNew">0</b><span>New</span></div>
+      <div class="stat s-contacted"><b id="cContacted">0</b><span>Contacted</span></div>
+      <div class="stat s-closed"><b id="cClosed">0</b><span>Closed</span></div>
+    </div>
+
+    <p class="notice" id="mailNotice" hidden>Email alerts are off. Add your SMTP details to the <code>.env</code> file to get each enquiry in your inbox.</p>
+
+    <div class="tools">
+      <input id="search" type="search" placeholder="Search name, phone, email, message or reference" aria-label="Search">
+      <select id="statusFilter" aria-label="Filter by status"><option value="">All statuses</option><option value="new">New</option><option value="contacted">Contacted</option><option value="closed">Closed</option></select>
+      <button class="btn ghost" id="refreshBtn" type="button">Refresh</button>
+      <a class="btn primary" href="/api/admin/export.csv">Download CSV</a>
+    </div>
+
+    <div id="list" class="list" aria-live="polite"></div>
+    <p class="empty" id="empty" hidden>No enquiries yet. When a customer fills in the form on your website it will appear here.</p>
+  </main>
+</div>
+
+<script src="/admin/admin.js"></script>
+</body>
+</html>
